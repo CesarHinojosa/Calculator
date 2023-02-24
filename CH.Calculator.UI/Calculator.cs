@@ -8,8 +8,90 @@ namespace CH.Calculator.UI
 {
     public class Calculator
     {
-       public double num { get; set; }
-       public double num2 { get; set; }
+       public double FirstNum { get; set; }
+       public double SecondNum { get; set; }
+       public double Answer { get; set; }
+       public string Op { get; set; }
+
+       public string Error = "Can't Divide By 0";
+
+       
+        public double CalculateAnswer()
+        {
+            switch (Op)
+            {
+                case "+": 
+                    return Answer = FirstNum + SecondNum;
+                case "-":
+                    return Answer = FirstNum - SecondNum;
+                case "*":
+                    return Answer = FirstNum * SecondNum;
+                case "/":
+                    try
+                    {
+                        if(SecondNum != 0)
+                        {
+                            return Answer = FirstNum / SecondNum;
+                        }
+                        
+                    }
+                    catch(DivideByZeroException)
+                    {
+                        Error.ToString();
+                    }
+                    return Answer = FirstNum / SecondNum;
+                default:
+                    break;
+                
+            }
+            return Answer;
+        }
+
+        public double CalculateEqual()
+        {
+            switch (Op) 
+            {
+                case "+":
+                    return Answer = Answer + SecondNum;
+                case "-":
+                    return Answer = Answer - SecondNum;
+                case "*":
+                    return Answer = Answer * SecondNum;
+                case "/":
+                    return Answer = Answer / SecondNum;
+                default:
+                    break;
+            }
+            return Answer;
+        }
+
+        public double SquareRoot()
+        {
+            
+            Answer = Math.Sqrt(FirstNum);
+            return Answer;
+        }
+
+        public double SquareRoot2()
+        {
+            return Answer = Math.Sqrt(Answer);
+            return Answer;
+        }
+        
+
+        public double OneOverX()
+        {
+            Answer = 1 / FirstNum;
+            return Answer;
+        }
+
+        public double AnsOverX() 
+        {
+            return Answer = 1 / Answer;
+        }
+
+        
+
 
       
 
