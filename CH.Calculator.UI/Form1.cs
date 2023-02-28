@@ -81,29 +81,29 @@ namespace CH.Calculator.UI
         {
             if (IsAnswered == false)
             {
-                
-                if (calculator.Op == "/" && calculator.SecondNum == 0)
-                {
-                    txtDisplay.Text = calculator.Error;
-                    
-                }
-                else
+
+                try
                 {
                     txtDisplay.Text = calculator.CalculateAnswer().ToString();
                     IsAnswered = true;
                 }
+                catch(DivideByZeroException)
+                {
+                    
+                    txtDisplay.Text = "Error";
+                }
             }
             else
             {
-                if (calculator.Op == "/" && calculator.SecondNum == 0)
-                {
-                    txtDisplay.Text = calculator.Error;
-
-                }
-                else
+                try
                 {
                     txtDisplay.Text = calculator.CalculateEqual().ToString();
-                    btnClear_Click(sender, e);
+                }
+                catch(DivideByZeroException)
+                {
+                    
+                    txtDisplay.Text = "Error";
+
                 }
                   
             }     

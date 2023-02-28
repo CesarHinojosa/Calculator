@@ -27,19 +27,14 @@ namespace CH.Calculator.UI
                 case "*":
                     return Answer = FirstNum * SecondNum;
                 case "/":
-                    try
+                    if(SecondNum == 0)
                     {
-                        if(SecondNum != 0)
-                        {
-                            return Answer = FirstNum / SecondNum;
-                        }
-                        
-                    }
-                    catch(DivideByZeroException)
+                        throw new DivideByZeroException();
+                    } 
+                    else
                     {
-                        Error.ToString();
-                    }
-                    return Answer = FirstNum / SecondNum;
+                        return Answer = FirstNum / SecondNum;
+                    }     
                 default:
                     break;
                 
@@ -58,7 +53,15 @@ namespace CH.Calculator.UI
                 case "*":
                     return Answer = Answer * SecondNum;
                 case "/":
-                    return Answer = Answer / SecondNum;
+                    if (SecondNum == 0)
+                    {
+                        throw new DivideByZeroException();
+                    }
+                    else
+                    {
+                        return Answer = Answer / SecondNum;
+                    }
+
                 default:
                     break;
             }
